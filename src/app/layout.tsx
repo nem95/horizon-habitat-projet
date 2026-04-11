@@ -20,8 +20,8 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://horizon-habitat-projet.com'),
   icons: {
-    icon: '/logo-hhp-transparent.webp',
-    apple: '/logo-hhp-transparent.webp',
+    icon: '/favicon.webp',
+    apple: '/favicon.webp',
   },
   title: {
     default: 'Rénovation Intérieure à Argenteuil | Horizon Habitat Projet',
