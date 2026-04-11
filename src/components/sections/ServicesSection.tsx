@@ -45,7 +45,7 @@ export function ServicesSection() {
           <h2 className="text-4xl md:text-5xl font-display font-normal text-bark leading-tight">
             Chaque espace
             <br />
-            <em className="font-light">mérite attention</em>
+            <span className="text-terra">mérite attention</span>
           </h2>
         </div>
 
@@ -93,9 +93,9 @@ export function ServicesSection() {
         <div className="mt-20 pt-12 border-t border-veil">
           <a
             href="#contact"
-            className="text-xs font-sans uppercase tracking-[0.15em] text-clay border-b border-bark/20 pb-1 hover:text-bark hover:border-bark/50 transition-colors"
+            className="inline-block bg-bark text-canvas px-7 py-3.5 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-bark/80 transition-colors duration-300"
           >
-            Demander un devis gratuit →
+            Demander un devis gratuit
           </a>
         </div>
       </div>

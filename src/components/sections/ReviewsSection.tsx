@@ -26,7 +26,7 @@ export function ReviewsSection() {
             Témoignages
           </p>
           <h2 className="text-4xl md:text-5xl font-display font-normal text-bark leading-tight">
-            Ils nous font <em className="font-light">confiance</em>
+            Ils nous font <span className="text-terra">confiance</span>
           </h2>
         </div>
 
@@ -56,9 +56,9 @@ export function ReviewsSection() {
             href="https://www.google.com/search?q=Horizon+Habitat+Projet+avis"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-sans uppercase tracking-[0.15em] text-clay border-b border-bark/20 pb-1 hover:text-bark hover:border-bark/50 transition-colors"
+            className="inline-block border border-bark text-bark px-6 py-3 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-bark hover:text-canvas transition-colors duration-300"
           >
-            Voir tous les avis →
+            Voir tous les avis
           </a>
         </div>
       </div>

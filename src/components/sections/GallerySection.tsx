@@ -20,12 +20,12 @@ export function GallerySection() {
               Portfolio
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-normal text-bark leading-tight">
-              Projets <em className="font-light">réalisés</em>
+              Projets <span className="text-terra">réalisés</span>
             </h2>
           </div>
           <a
             href="#contact"
-            className="text-xs font-sans uppercase tracking-[0.15em] text-clay border-b border-bark/20 pb-1 hover:text-bark hover:border-bark/50 transition-colors self-start md:self-auto"
+            className="inline-block bg-bark text-canvas px-6 py-3 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-bark/80 transition-colors duration-300 self-start md:self-auto shrink-0"
           >
             Demander un devis
           </a>

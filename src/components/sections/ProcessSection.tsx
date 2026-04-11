@@ -29,7 +29,7 @@ export function ProcessSection() {
             <h2 className="text-4xl md:text-5xl font-display font-normal text-bark leading-tight">
               Simple,
               <br />
-              <em className="font-light">transparent.</em>
+              <span className="text-terra">transparent.</span>
             </h2>
           </div>
 

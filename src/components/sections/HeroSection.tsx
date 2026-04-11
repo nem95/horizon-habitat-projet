@@ -29,7 +29,7 @@ export function HeroSection() {
           >
             Votre intérieur,
             <br />
-            <em className="font-light">réinventé.</em>
+            <span className="text-terra">réinventé.</span>
           </h1>
 
           <p
@@ -41,18 +41,18 @@ export function HeroSection() {
           </p>
 
           <div
-            className="flex items-center gap-8 animate-fade-in-up"
+            className="flex items-center gap-4 animate-fade-in-up"
             style={{ animationDelay: '0.35s' }}
           >
             <a
               href="#contact"
-              className="text-xs font-sans uppercase tracking-[0.15em] text-canvas border-b border-canvas/40 pb-1 hover:border-canvas transition-colors duration-300"
+              className="inline-block bg-canvas text-bark px-7 py-3.5 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-canvas/90 transition-colors duration-300"
             >
               Demander un devis
             </a>
             <a
               href="#realisations"
-              className="text-xs font-sans uppercase tracking-[0.15em] text-canvas/50 hover:text-canvas transition-colors duration-300"
+              className="inline-block border border-canvas/60 text-canvas px-7 py-3.5 text-xs font-sans uppercase tracking-[0.12em] hover:border-canvas hover:text-canvas transition-colors duration-300"
             >
               Voir les projets
             </a>

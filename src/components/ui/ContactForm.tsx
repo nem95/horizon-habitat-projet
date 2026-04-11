@@ -9,118 +9,108 @@ const initialState: ContactFormState = {
   message: '',
 }
 
+function Field({
+  label,
+  error,
+  children,
+}: {
+  label: string
+  error?: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="space-y-2">
+      <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-canvas/40">
+        {label}
+      </p>
+      {children}
+      {error && (
+        <p className="text-xs font-sans text-terra/80">{error}</p>
+      )}
+    </div>
+  )
+}
+
 const inputClass =
-  'w-full h-10 border-0 border-b border-veil bg-transparent text-sm font-sans text-bark placeholder:text-clay/50 focus:outline-none focus:border-bark transition-colors duration-300 disabled:opacity-40'
+  'w-full bg-transparent border-b border-canvas/20 py-3 text-sm font-sans text-canvas placeholder:text-canvas/25 focus:outline-none focus:border-terra transition-colors duration-300 disabled:opacity-30'
 
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(sendContactForm, initialState)
 
   return (
-    <form action={formAction} className="space-y-6">
+    <form action={formAction} className="space-y-8">
       {/* Honeypot */}
       <input type="hidden" name="website" value="" />
 
-      {/* Row 1: Prénom + Nom */}
-      <div className="grid grid-cols-2 gap-4">
-        <div>
+      {/* Row 1 */}
+      <div className="grid grid-cols-2 gap-6">
+        <Field label="Prénom" error={state?.fieldErrors?.prenom?.[0]}>
           <input
             type="text"
-            id="prenom"
             name="prenom"
             required
             disabled={isPending}
-            placeholder="Prénom"
+            placeholder="Jean"
             className={inputClass}
           />
-          {state?.fieldErrors?.prenom && (
-            <p className="text-red-500 text-xs mt-1">{state.fieldErrors.prenom[0]}</p>
-          )}
-        </div>
-        <div>
+        </Field>
+        <Field label="Nom" error={state?.fieldErrors?.nom?.[0]}>
           <input
             type="text"
-            id="nom"
             name="nom"
             required
             disabled={isPending}
-            placeholder="Nom"
+            placeholder="Dupont"
             className={inputClass}
           />
-          {state?.fieldErrors?.nom && (
-            <p className="text-red-500 text-xs mt-1">{state.fieldErrors.nom[0]}</p>
-          )}
-        </div>
+        </Field>
       </div>
 
-      {/* Row 2: Téléphone + Email */}
-      <div className="grid grid-cols-2 gap-4">
-        <div>
+      {/* Row 2 */}
+      <div className="grid grid-cols-2 gap-6">
+        <Field label="Téléphone" error={state?.fieldErrors?.telephone?.[0]}>
           <input
             type="tel"
-            id="telephone"
             name="telephone"
             required
             disabled={isPending}
-            placeholder="Téléphone"
+            placeholder="06 00 00 00 00"
             className={inputClass}
           />
-          {state?.fieldErrors?.telephone && (
-            <p className="text-red-500 text-xs mt-1">{state.fieldErrors.telephone[0]}</p>
-          )}
-        </div>
-        <div>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
+        </Field>
+        <Field label="Type de travaux">
+          <select
+            name="travaux"
             disabled={isPending}
-            placeholder="Email"
-            className={inputClass}
-          />
-          {state?.fieldErrors?.email && (
-            <p className="text-red-500 text-xs mt-1">{state.fieldErrors.email[0]}</p>
-          )}
-        </div>
-      </div>
-
-      {/* Type de travaux */}
-      <div>
-        <select
-          name="travaux"
-          disabled={isPending}
-          className="w-full h-10 border-0 border-b border-veil bg-transparent text-sm font-sans text-clay focus:outline-none focus:border-bark transition-colors duration-300 disabled:opacity-40"
-        >
-          <option value="">Type de travaux</option>
-          <option value="cuisine">Cuisine</option>
-          <option value="sdb">Salle de bain</option>
-          <option value="sol">Sols &amp; revêtements</option>
-          <option value="peinture">Peinture</option>
-          <option value="electricite">Électricité</option>
-          <option value="amenagement">Aménagement</option>
-          <option value="autre">Autre</option>
-        </select>
+            className="w-full bg-transparent border-b border-canvas/20 py-3 text-sm font-sans text-canvas/60 focus:outline-none focus:border-terra transition-colors duration-300 disabled:opacity-30"
+          >
+            <option value="" className="bg-bark text-canvas">Choisir…</option>
+            <option value="cuisine" className="bg-bark text-canvas">Cuisine</option>
+            <option value="sdb" className="bg-bark text-canvas">Salle de bain</option>
+            <option value="sol" className="bg-bark text-canvas">Sols & revêtements</option>
+            <option value="peinture" className="bg-bark text-canvas">Peinture</option>
+            <option value="electricite" className="bg-bark text-canvas">Électricité</option>
+            <option value="amenagement" className="bg-bark text-canvas">Aménagement</option>
+            <option value="autre" className="bg-bark text-canvas">Autre</option>
+          </select>
+        </Field>
       </div>
 
       {/* Message */}
-      <div>
+      <Field label="Votre projet" error={state?.fieldErrors?.message?.[0]}>
         <textarea
-          id="message"
           name="message"
           required
           disabled={isPending}
           rows={4}
-          placeholder="Décrivez votre projet..."
-          className="w-full border-0 border-b border-veil bg-transparent text-sm font-sans text-bark placeholder:text-clay/50 focus:outline-none focus:border-bark transition-colors duration-300 resize-none pt-2 disabled:opacity-40"
+          placeholder="Décrivez brièvement votre projet, la surface, vos envies..."
+          className={`${inputClass} resize-none`}
         />
-        {state?.fieldErrors?.message && (
-          <p className="text-red-500 text-xs mt-1">{state.fieldErrors.message[0]}</p>
-        )}
-      </div>
+      </Field>
 
-      {/* Status message */}
+      {/* Status */}
       {state?.message && (
-        <p className={`text-sm font-sans ${state.success ? 'text-green-700' : 'text-red-600'}`}>
+        <p className={`text-sm font-sans ${state.success ? 'text-canvas/70' : 'text-terra'}`}>
           {state.message}
         </p>
       )}
@@ -129,9 +119,12 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={isPending}
-        className="text-xs font-sans uppercase tracking-[0.15em] text-bark border-b border-bark/30 pb-1 hover:border-terra hover:text-terra transition-colors duration-300 mt-4 disabled:opacity-40 disabled:cursor-not-allowed"
+        className="group flex items-center gap-4 disabled:opacity-40 disabled:cursor-not-allowed"
       >
-        {isPending ? 'Envoi en cours...' : 'Envoyer ma demande →'}
+        <span className="bg-terra text-canvas px-8 py-4 text-xs font-sans font-medium uppercase tracking-[0.15em] group-hover:bg-terra/80 transition-colors duration-300">
+          {isPending ? 'Envoi…' : 'Envoyer ma demande'}
+        </span>
+        <span className="w-8 h-px bg-canvas/20 group-hover:w-14 group-hover:bg-terra transition-all duration-500" />
       </button>
     </form>
   )

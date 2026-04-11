@@ -845,22 +845,29 @@ export default async function BlogPostPage({
   const content = articleContent[post.slug] || '<p>Contenu de l\'article à venir...</p>'
 
   return (
-    <div className="flex flex-col min-h-screen bg-ivory">
+    <div className="flex flex-col min-h-screen bg-canvas">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-20">
+
         {/* Hero */}
-        <section className="bg-charcoal text-ivory py-16 lg:py-20 px-6 lg:px-24">
+        <section className="bg-bark py-16 lg:py-24 px-6 lg:px-10">
           <div className="max-w-3xl mx-auto">
             <Link
               href="/blog"
-              className="inline-flex items-center text-gold hover:text-gold-light transition-colors mb-4"
+              className="inline-flex items-center gap-2 text-xs font-sans uppercase tracking-[0.15em] text-canvas/50 hover:text-canvas transition-colors mb-10"
             >
-              ← Retour aux articles
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              Retour aux articles
             </Link>
-            <h1 className="font-display text-4xl lg:text-5xl font-light mb-6">
+            <p className="text-[10px] font-sans uppercase tracking-[0.25em] text-terra mb-6">
+              Article
+            </p>
+            <h1 className="font-display text-3xl md:text-5xl text-canvas font-bold leading-tight mb-8">
               {post.title}
             </h1>
-            <div className="flex flex-wrap items-center gap-6 text-ivory/70 font-sans text-sm">
+            <div className="flex flex-wrap items-center gap-6 text-canvas/40 font-sans text-xs uppercase tracking-[0.1em]">
               <time>
                 {new Date(post.date).toLocaleDateString('fr-FR', {
                   year: 'numeric',
@@ -868,29 +875,29 @@ export default async function BlogPostPage({
                   day: 'numeric',
                 })}
               </time>
-              <span>Par {post.author}</span>
-              <span>{post.readingTime} min de lecture</span>
+              {post.author && <span>{post.author}</span>}
+              {post.readingTime && <span>{post.readingTime} min de lecture</span>}
             </div>
           </div>
         </section>
 
         {/* Article Content */}
-        <section className="bg-ivory py-16 lg:py-24 px-6 lg:px-24">
+        <section className="py-16 lg:py-24 px-6 lg:px-10">
           <div className="max-w-3xl mx-auto">
-            <article className="font-sans text-charcoal/90 leading-relaxed prose prose-custom max-w-none">
+            <article className="article-prose">
               <div dangerouslySetInnerHTML={{ __html: content }} />
             </article>
 
-            {/* Article Meta */}
-            <div className="mt-16 pt-8 border-t border-gold/20">
-              <p className="font-sans text-charcoal/70 mb-4">
-                Cet article vous a intéressé ? Contactez-nous pour discuter de votre projet de rénovation.
+            {/* CTA */}
+            <div className="mt-20 pt-10 border-t border-veil flex flex-col sm:flex-row sm:items-center gap-6">
+              <p className="font-sans text-sm text-clay">
+                Cet article vous a intéressé ?
               </p>
               <Link
-                href="/#nous_contacter"
-                className="inline-block px-6 py-3 bg-gold text-charcoal font-semibold hover:bg-gold-light transition-colors"
+                href="/#contact"
+                className="inline-block bg-bark text-canvas px-7 py-3.5 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-bark/80 transition-colors"
               >
-                Nous contacter
+                Discuter de votre projet
               </Link>
             </div>
           </div>
@@ -898,39 +905,33 @@ export default async function BlogPostPage({
 
         {/* Related Posts */}
         {relatedPosts.length > 0 && (
-          <section className="bg-surface py-16 lg:py-24 px-6 lg:px-24">
-            <div className="max-w-7xl mx-auto">
-              <h2 className="font-display text-3xl text-ivory mb-12 font-light">
+          <section className="border-t border-veil py-16 lg:py-24 px-6 lg:px-10">
+            <div className="max-w-6xl mx-auto">
+              <p className="text-[10px] font-sans uppercase tracking-[0.25em] text-clay mb-10">
                 Articles connexes
-              </h2>
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 {relatedPosts.map((relatedPost) => (
                   <Link
                     key={relatedPost.slug}
                     href={`/blog/${relatedPost.slug}`}
-                    className="group"
+                    className="group border-t border-veil pt-8"
                   >
-                    <article className="bg-charcoal text-ivory p-6 rounded-sm h-full flex flex-col hover:border-gold border-2 border-transparent transition-colors">
-                      <div className="flex items-center gap-4 mb-4 text-sm text-ivory/60">
-                        <span>{relatedPost.readingTime} min</span>
-                        <time>
-                          {new Date(relatedPost.date).toLocaleDateString(
-                            'fr-FR',
-                            {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric',
-                            }
-                          )}
-                        </time>
-                      </div>
-                      <h3 className="font-display text-lg text-ivory mb-3 group-hover:text-gold transition-colors font-light">
-                        {relatedPost.title}
-                      </h3>
-                      <p className="font-sans text-ivory/60 text-sm flex-1">
-                        {relatedPost.description}
-                      </p>
-                    </article>
+                    <div className="flex items-center gap-4 mb-4 text-[10px] font-sans uppercase tracking-[0.1em] text-clay">
+                      {relatedPost.readingTime && <span>{relatedPost.readingTime} min</span>}
+                      <time>
+                        {new Date(relatedPost.date).toLocaleDateString('fr-FR', {
+                          month: 'short',
+                          year: 'numeric',
+                        })}
+                      </time>
+                    </div>
+                    <h3 className="font-display text-lg text-bark font-bold mb-3 group-hover:text-terra transition-colors leading-tight">
+                      {relatedPost.title}
+                    </h3>
+                    <p className="font-sans text-clay text-sm leading-relaxed">
+                      {relatedPost.description}
+                    </p>
                   </Link>
                 ))}
               </div>

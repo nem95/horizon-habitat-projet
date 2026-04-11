@@ -43,7 +43,7 @@ export async function sendContactEmail(
 
     const result = await resend.emails.send({
       from: 'noreply@horizon-habitat-projet.com',
-      to: process.env.CONTACT_EMAIL || 'contact@horizon-habitat-projet.com',
+      to: process.env.CONTACT_EMAIL || 'process.env.CONTACT_EMAIL',
       replyTo: data.email,
       subject: `Nouvelle demande de contact de ${data.prenom} ${data.nom}`,
       html: generateEmailHTML(data),
@@ -80,7 +80,7 @@ export async function sendContactEmail(
 
     const result = await transporter.sendMail({
       from: process.env.SMTP_FROM || process.env.SMTP_USER,
-      to: process.env.CONTACT_EMAIL || 'contact@horizon-habitat-projet.com',
+      to: process.env.CONTACT_EMAIL || 'process.env.CONTACT_EMAIL',
       replyTo: data.email,
       subject: `Nouvelle demande de contact de ${data.prenom} ${data.nom}`,
       html: generateEmailHTML(data),
@@ -99,7 +99,7 @@ export async function sendContactEmail(
     sgMail.setApiKey(process.env.SENDGRID_API_KEY || '')
 
     const result = await sgMail.send({
-      to: process.env.CONTACT_EMAIL || 'contact@horizon-habitat-projet.com',
+      to: process.env.CONTACT_EMAIL || 'process.env.CONTACT_EMAIL',
       from: process.env.SENDGRID_FROM_EMAIL || 'noreply@horizon-habitat-projet.com',
       replyTo: data.email,
       subject: `Nouvelle demande de contact de ${data.prenom} ${data.nom}`,

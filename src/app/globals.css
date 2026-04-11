@@ -55,6 +55,117 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
-  font-weight: 400;
-  line-height: 1.1;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Article prose ---- */
+.article-prose {
+  color: var(--color-bark);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.85;
+}
+
+.article-prose p {
+  margin-bottom: 1.75rem;
+  color: color-mix(in srgb, var(--color-bark) 80%, transparent);
+}
+
+.article-prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-bark);
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-veil);
+}
+
+.article-prose h3 {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-bark);
+  margin-top: 2.5rem;
+  margin-bottom: 0.875rem;
+}
+
+.article-prose ul,
+.article-prose ol {
+  margin-bottom: 1.75rem;
+  padding-left: 1.5rem;
+  color: color-mix(in srgb, var(--color-bark) 80%, transparent);
+}
+
+.article-prose ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.article-prose ul li {
+  padding-left: 1.25rem;
+  position: relative;
+  margin-bottom: 0.625rem;
+  line-height: 1.7;
+}
+
+.article-prose ul li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--color-terra);
+  font-size: 0.875rem;
+}
+
+.article-prose ol {
+  list-style-type: decimal;
+}
+
+.article-prose ol li {
+  margin-bottom: 0.625rem;
+  line-height: 1.7;
+  padding-left: 0.25rem;
+}
+
+.article-prose strong {
+  font-weight: 600;
+  color: var(--color-bark);
+}
+
+.article-prose a {
+  color: var(--color-terra);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.article-prose th {
+  background: var(--color-veil);
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.article-prose td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--color-veil);
+  vertical-align: top;
+}
+
+.article-prose tr:last-child td {
+  border-bottom: none;
 }

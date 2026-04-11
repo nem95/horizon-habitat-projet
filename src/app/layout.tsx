@@ -1,18 +1,17 @@
 import type { Metadata } from 'next'
-import { Playfair_Display, Inter } from 'next/font/google'
+import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
 import { buildLocalBusinessSchema } from '@/lib/schema'
 import { COMPANY_INFO } from '@/types'
 
-const playfairDisplay = Playfair_Display({
+const syne = Syne({
   subsets: ['latin'],
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-playfair',
 })
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
@@ -107,7 +106,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${playfairDisplay.variable} ${inter.variable} scroll-smooth`}
+      className={`${syne.variable} ${dmSans.variable} scroll-smooth`}
     >
       <head>
         <script

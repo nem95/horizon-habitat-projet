@@ -53,7 +53,7 @@ export const COMPANY_INFO = {
   name: 'Horizon Habitat Projet',
   phone: '07 66 41 56 39',
   phoneHref: 'tel:0766415639',
-  email: 'contact@horizon-habitat-projet.com',
+  email: '',
   address: {
     street: 'Argenteuil',
     city: 'Argenteuil',
