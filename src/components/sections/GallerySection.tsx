@@ -4,7 +4,7 @@ const photos = [
   { src: '/images/cuisine_cergy_pontoise.webp', alt: 'Cuisine rénovée — Cergy Pontoise', tall: true },
   { src: '/images/salle_de_bain_paris.webp', alt: 'Salle de bain — Paris', tall: false },
   { src: '/images/pose_carrelage_ile_de_france.webp', alt: "Pose carrelage — Île-de-France", tall: false },
-  { src: '/images/renovation-salon.jpg', alt: 'Salon ouvert — Pontoise', tall: true },
+  { src: '/images/electricien_argenteuil.webp', alt: 'Électricité — Argenteuil', tall: true },
   { src: '/images/peinture_val_oise.webp', alt: 'Peinture intérieure — Val-d\'Oise', tall: false },
   { src: '/images/déco_interieur.webp', alt: 'Décoration intérieure — Île-de-France', tall: false },
 ]
