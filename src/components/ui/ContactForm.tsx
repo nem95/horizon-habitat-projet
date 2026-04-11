@@ -91,23 +91,35 @@ export function ContactForm() {
               className={inputClass}
             />
           </Field>
-          <Field label="Type de travaux">
-            <select
-              name="travaux"
+          <Field label="Email" error={state?.fieldErrors?.email?.[0]}>
+            <input
+              type="email"
+              name="email"
+              required
               disabled={isPending}
+              placeholder="jean@email.com"
               className={inputClass}
-            >
-              <option value="" className="bg-bark text-canvas">Choisir…</option>
-              <option value="cuisine" className="bg-bark text-canvas">Cuisine</option>
-              <option value="sdb" className="bg-bark text-canvas">Salle de bain</option>
-              <option value="sol" className="bg-bark text-canvas">Sols &amp; revêtements</option>
-              <option value="peinture" className="bg-bark text-canvas">Peinture</option>
-              <option value="electricite" className="bg-bark text-canvas">Électricité</option>
-              <option value="amenagement" className="bg-bark text-canvas">Aménagement</option>
-              <option value="autre" className="bg-bark text-canvas">Autre</option>
-            </select>
+            />
           </Field>
         </div>
+
+        {/* Row 3 */}
+        <Field label="Type de travaux">
+          <select
+            name="travaux"
+            disabled={isPending}
+            className={inputClass}
+          >
+            <option value="" className="bg-bark text-canvas">Choisir…</option>
+            <option value="cuisine" className="bg-bark text-canvas">Cuisine</option>
+            <option value="sdb" className="bg-bark text-canvas">Salle de bain</option>
+            <option value="sol" className="bg-bark text-canvas">Sols &amp; revêtements</option>
+            <option value="peinture" className="bg-bark text-canvas">Peinture</option>
+            <option value="electricite" className="bg-bark text-canvas">Électricité</option>
+            <option value="amenagement" className="bg-bark text-canvas">Aménagement</option>
+            <option value="autre" className="bg-bark text-canvas">Autre</option>
+          </select>
+        </Field>
 
         {/* Message */}
         <Field label="Votre projet" error={state?.fieldErrors?.message?.[0]}>
