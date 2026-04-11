@@ -48,9 +48,10 @@ body {
   background: var(--color-canvas);
   color: var(--color-bark);
   font-family: var(--font-sans);
+  font-size: 1rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -64,8 +65,8 @@ h1, h2, h3, h4, h5, h6 {
 .article-prose {
   color: var(--color-bark);
   font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.85;
+  font-size: 1.0625rem; /* 17px — easier reading on mobile for 30+ */
+  line-height: 1.9;
 }
 
 .article-prose p {

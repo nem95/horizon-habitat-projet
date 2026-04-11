@@ -20,112 +20,136 @@ function Field({
 }) {
   return (
     <div className="space-y-2">
-      <p className="text-[10px] font-sans uppercase tracking-[0.2em] text-canvas/40">
+      <p className="text-xs font-sans uppercase tracking-[0.2em] text-terra">
         {label}
       </p>
       {children}
       {error && (
-        <p className="text-xs font-sans text-terra/80">{error}</p>
+        <p className="text-xs font-sans text-terra mt-1">{error}</p>
       )}
     </div>
   )
 }
 
-const inputClass =
-  'w-full bg-transparent border-b border-canvas/20 py-3 text-sm font-sans text-canvas placeholder:text-canvas/25 focus:outline-none focus:border-terra transition-colors duration-300 disabled:opacity-30'
+const inputClass = [
+  'w-full',
+  'bg-canvas/8',
+  'border border-canvas/25',
+  'px-4 py-3.5',
+  'text-base font-sans text-canvas',
+  'placeholder:text-canvas/30',
+  'focus:outline-none focus:border-terra focus:bg-canvas/14',
+  'hover:border-canvas/40',
+  'transition-all duration-300',
+  'disabled:opacity-30',
+].join(' ')
 
 export function ContactForm() {
   const [state, formAction, isPending] = useActionState(sendContactForm, initialState)
 
   return (
-    <form action={formAction} className="space-y-8">
+    <form action={formAction}>
       {/* Honeypot */}
       <input type="hidden" name="website" value="" />
 
-      {/* Row 1 */}
-      <div className="grid grid-cols-2 gap-6">
-        <Field label="Prénom" error={state?.fieldErrors?.prenom?.[0]}>
-          <input
-            type="text"
-            name="prenom"
-            required
-            disabled={isPending}
-            placeholder="Jean"
-            className={inputClass}
-          />
-        </Field>
-        <Field label="Nom" error={state?.fieldErrors?.nom?.[0]}>
-          <input
-            type="text"
-            name="nom"
-            required
-            disabled={isPending}
-            placeholder="Dupont"
-            className={inputClass}
-          />
-        </Field>
-      </div>
+      {/* Form card */}
+      <div className="border border-canvas/10 p-6 lg:p-8 space-y-6">
 
-      {/* Row 2 */}
-      <div className="grid grid-cols-2 gap-6">
-        <Field label="Téléphone" error={state?.fieldErrors?.telephone?.[0]}>
-          <input
-            type="tel"
-            name="telephone"
+        {/* Row 1 */}
+        <div className="grid grid-cols-2 gap-4">
+          <Field label="Prénom" error={state?.fieldErrors?.prenom?.[0]}>
+            <input
+              type="text"
+              name="prenom"
+              required
+              disabled={isPending}
+              placeholder="Jean"
+              className={inputClass}
+            />
+          </Field>
+          <Field label="Nom" error={state?.fieldErrors?.nom?.[0]}>
+            <input
+              type="text"
+              name="nom"
+              required
+              disabled={isPending}
+              placeholder="Dupont"
+              className={inputClass}
+            />
+          </Field>
+        </div>
+
+        {/* Row 2 */}
+        <div className="grid grid-cols-2 gap-4">
+          <Field label="Téléphone" error={state?.fieldErrors?.telephone?.[0]}>
+            <input
+              type="tel"
+              name="telephone"
+              required
+              disabled={isPending}
+              placeholder="06 00 00 00 00"
+              className={inputClass}
+            />
+          </Field>
+          <Field label="Type de travaux">
+            <select
+              name="travaux"
+              disabled={isPending}
+              className={inputClass}
+            >
+              <option value="" className="bg-bark text-canvas">Choisir…</option>
+              <option value="cuisine" className="bg-bark text-canvas">Cuisine</option>
+              <option value="sdb" className="bg-bark text-canvas">Salle de bain</option>
+              <option value="sol" className="bg-bark text-canvas">Sols &amp; revêtements</option>
+              <option value="peinture" className="bg-bark text-canvas">Peinture</option>
+              <option value="electricite" className="bg-bark text-canvas">Électricité</option>
+              <option value="amenagement" className="bg-bark text-canvas">Aménagement</option>
+              <option value="autre" className="bg-bark text-canvas">Autre</option>
+            </select>
+          </Field>
+        </div>
+
+        {/* Message */}
+        <Field label="Votre projet" error={state?.fieldErrors?.message?.[0]}>
+          <textarea
+            name="message"
             required
             disabled={isPending}
-            placeholder="06 00 00 00 00"
-            className={inputClass}
+            rows={5}
+            placeholder="Décrivez brièvement votre projet — surface, type de travaux, délais souhaités..."
+            className={`${inputClass} resize-none`}
           />
         </Field>
-        <Field label="Type de travaux">
-          <select
-            name="travaux"
-            disabled={isPending}
-            className="w-full bg-transparent border-b border-canvas/20 py-3 text-sm font-sans text-canvas/60 focus:outline-none focus:border-terra transition-colors duration-300 disabled:opacity-30"
-          >
-            <option value="" className="bg-bark text-canvas">Choisir…</option>
-            <option value="cuisine" className="bg-bark text-canvas">Cuisine</option>
-            <option value="sdb" className="bg-bark text-canvas">Salle de bain</option>
-            <option value="sol" className="bg-bark text-canvas">Sols & revêtements</option>
-            <option value="peinture" className="bg-bark text-canvas">Peinture</option>
-            <option value="electricite" className="bg-bark text-canvas">Électricité</option>
-            <option value="amenagement" className="bg-bark text-canvas">Aménagement</option>
-            <option value="autre" className="bg-bark text-canvas">Autre</option>
-          </select>
-        </Field>
-      </div>
 
-      {/* Message */}
-      <Field label="Votre projet" error={state?.fieldErrors?.message?.[0]}>
-        <textarea
-          name="message"
-          required
+        {/* Divider */}
+        <div className="h-px bg-canvas/10" />
+
+        {/* Status */}
+        {state?.message && (
+          <p className={`text-sm font-sans ${state.success ? 'text-canvas/70' : 'text-terra'}`}>
+            {state.message}
+          </p>
+        )}
+
+        {/* Submit */}
+        <button
+          type="submit"
           disabled={isPending}
-          rows={4}
-          placeholder="Décrivez brièvement votre projet, la surface, vos envies..."
-          className={`${inputClass} resize-none`}
-        />
-      </Field>
-
-      {/* Status */}
-      {state?.message && (
-        <p className={`text-sm font-sans ${state.success ? 'text-canvas/70' : 'text-terra'}`}>
-          {state.message}
-        </p>
-      )}
-
-      {/* Submit */}
-      <button
-        type="submit"
-        disabled={isPending}
-        className="group flex items-center gap-4 disabled:opacity-40 disabled:cursor-not-allowed"
-      >
-        <span className="bg-terra text-canvas px-8 py-4 text-xs font-sans font-medium uppercase tracking-[0.15em] group-hover:bg-terra/80 transition-colors duration-300">
-          {isPending ? 'Envoi…' : 'Envoyer ma demande'}
-        </span>
-        <span className="w-8 h-px bg-canvas/20 group-hover:w-14 group-hover:bg-terra transition-all duration-500" />
-      </button>
+          className="group w-full flex items-center justify-between bg-terra text-canvas px-6 py-4 hover:bg-terra/85 transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed"
+        >
+          <span className="text-sm font-sans font-medium uppercase tracking-[0.15em]">
+            {isPending ? 'Envoi en cours…' : 'Envoyer ma demande'}
+          </span>
+          <svg
+            className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </button>
+      </div>
     </form>
   )
 }

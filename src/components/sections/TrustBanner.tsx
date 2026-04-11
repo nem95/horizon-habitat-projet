@@ -19,7 +19,7 @@ export function TrustBanner() {
                 </svg>
               ))}
             </div>
-            <span className="text-xs font-sans text-clay tracking-wide">
+            <span className="text-sm font-sans text-clay tracking-wide">
               Note Excellent · Google
             </span>
           </div>
@@ -31,7 +31,7 @@ export function TrustBanner() {
                 <p className="text-2xl md:text-3xl font-display font-normal text-bark">
                   {stat.value}
                 </p>
-                <p className="text-[10px] font-sans uppercase tracking-[0.15em] text-clay mt-1">
+                <p className="text-xs font-sans uppercase tracking-[0.15em] text-clay mt-1">
                   {stat.label}
                 </p>
               </div>

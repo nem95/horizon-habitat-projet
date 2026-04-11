@@ -17,7 +17,7 @@ export function ContactSection() {
               <br />
               <span className="text-canvas/50">votre projet</span>
             </h2>
-            <p className="text-sm font-sans font-light text-canvas/60 leading-relaxed mb-10 max-w-xs">
+            <p className="text-base font-sans font-light text-canvas/60 leading-relaxed mb-10 max-w-xs">
               Devis gratuit, réponse sous 24 heures,
               sans engagement. Chaque projet commence
               par une conversation.
@@ -26,22 +26,22 @@ export function ContactSection() {
             <div className="space-y-4">
               <a
                 href={COMPANY_INFO.phoneHref}
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-3 group min-h-[44px]"
               >
                 <span className="w-8 h-px bg-canvas/20 group-hover:bg-terra group-hover:w-12 transition-all duration-300" />
-                <span className="text-sm font-sans text-canvas/70 group-hover:text-canvas transition-colors">
+                <span className="text-lg font-sans font-medium text-canvas/90 group-hover:text-canvas transition-colors">
                   {COMPANY_INFO.phone}
                 </span>
               </a>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-px bg-canvas/20" />
-                <span className="text-sm font-sans text-canvas/50">
+                <span className="text-base font-sans text-canvas/50">
                   Paris · Val d&apos;Oise · Île-de-France
                 </span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-8 h-px bg-canvas/20" />
-                <span className="text-sm font-sans text-canvas/50">
+                <span className="text-base font-sans text-canvas/50">
                   Lun–Ven 8h–19h &nbsp;·&nbsp; Sam 9h–17h
                 </span>
               </div>

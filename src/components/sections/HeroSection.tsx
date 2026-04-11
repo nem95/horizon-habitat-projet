@@ -19,7 +19,7 @@ export function HeroSection() {
       {/* Content — bottom-left */}
       <div className="relative z-10 max-w-6xl mx-auto w-full px-6 lg:px-10 pb-20 md:pb-28">
         <div className="max-w-2xl">
-          <p className="text-xs font-sans uppercase tracking-[0.2em] text-canvas/60 mb-6 animate-fade-in-up">
+          <p className="text-sm font-sans uppercase tracking-[0.2em] text-canvas/60 mb-6 animate-fade-in-up">
             Artisan rénovation · Île-de-France
           </p>
 
@@ -33,7 +33,7 @@ export function HeroSection() {
           </h1>
 
           <p
-            className="text-sm md:text-base font-sans font-light text-canvas/70 max-w-md leading-relaxed mb-10 animate-fade-in-up"
+            className="text-base md:text-lg font-sans font-light text-canvas/70 max-w-md leading-relaxed mb-10 animate-fade-in-up"
             style={{ animationDelay: '0.2s' }}
           >
             Cuisine, salle de bain, sols, peinture — un interlocuteur unique
@@ -46,13 +46,13 @@ export function HeroSection() {
           >
             <a
               href="#contact"
-              className="inline-block bg-canvas text-bark px-7 py-3.5 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-canvas/90 transition-colors duration-300"
+              className="inline-block bg-canvas text-bark px-7 py-4 text-sm font-sans font-medium uppercase tracking-[0.12em] hover:bg-canvas/90 transition-colors duration-300"
             >
               Demander un devis
             </a>
             <a
               href="#realisations"
-              className="inline-block border border-canvas/60 text-canvas px-7 py-3.5 text-xs font-sans uppercase tracking-[0.12em] hover:border-canvas hover:text-canvas transition-colors duration-300"
+              className="inline-block border border-canvas/60 text-canvas px-7 py-4 text-sm font-sans uppercase tracking-[0.12em] hover:border-canvas hover:text-canvas transition-colors duration-300"
             >
               Voir les projets
             </a>

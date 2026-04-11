@@ -39,7 +39,7 @@ export function ServicesSection() {
       <div className="max-w-6xl mx-auto px-6 lg:px-10">
         {/* Header */}
         <div className="mb-20 max-w-lg">
-          <p className="text-xs font-sans uppercase tracking-[0.2em] text-clay mb-4">
+          <p className="text-sm font-sans uppercase tracking-[0.2em] text-clay mb-4">
             Savoir-faire
           </p>
           <h2 className="text-4xl md:text-5xl font-display font-normal text-bark leading-tight">
@@ -71,7 +71,7 @@ export function ServicesSection() {
                   <h3 className="text-xl font-display font-medium text-bark mb-2">
                     {service.title}
                   </h3>
-                  <p className="text-sm font-sans font-light text-clay max-w-xs leading-relaxed">
+                  <p className="text-base font-sans font-light text-clay max-w-xs leading-relaxed">
                     {service.desc}
                   </p>
                 </div>
@@ -93,7 +93,7 @@ export function ServicesSection() {
         <div className="mt-20 pt-12 border-t border-veil">
           <a
             href="#contact"
-            className="inline-block bg-bark text-canvas px-7 py-3.5 text-xs font-sans font-medium uppercase tracking-[0.12em] hover:bg-bark/80 transition-colors duration-300"
+            className="inline-block bg-bark text-canvas px-7 py-4 text-sm font-sans font-medium uppercase tracking-[0.12em] hover:bg-bark/80 transition-colors duration-300"
           >
             Demander un devis gratuit
           </a>

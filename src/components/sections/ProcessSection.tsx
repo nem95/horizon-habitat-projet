@@ -23,7 +23,7 @@ export function ProcessSection() {
         <div className="grid md:grid-cols-[1fr_2fr] gap-16">
           {/* Left */}
           <div>
-            <p className="text-xs font-sans uppercase tracking-[0.2em] text-clay mb-4">
+            <p className="text-sm font-sans uppercase tracking-[0.2em] text-clay mb-4">
               Approche
             </p>
             <h2 className="text-4xl md:text-5xl font-display font-normal text-bark leading-tight">
@@ -44,7 +44,7 @@ export function ProcessSection() {
                   <h3 className="text-lg font-display font-medium text-bark mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm font-sans font-light text-clay leading-relaxed max-w-sm">
+                  <p className="text-base font-sans font-light text-clay leading-relaxed max-w-sm">
                     {step.desc}
                   </p>
                 </div>
