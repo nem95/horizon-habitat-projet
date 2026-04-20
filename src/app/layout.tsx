@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Syne, DM_Sans } from 'next/font/google'
 import './globals.css'
-import { buildLocalBusinessSchema } from '@/lib/schema'
+import { buildLocalBusinessSchema, buildOrganizationSchema } from '@/lib/schema'
 import { COMPANY_INFO } from '@/types'
 
 const syne = Syne({
@@ -18,7 +18,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://horizon-habitat-projet.com'),
+  metadataBase: new URL('https://new.horizon-habitat-projet.com'),
   icons: {
     icon: '/favicon.webp',
     apple: '/favicon.webp',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: '%s | Horizon Habitat Projet',
   },
   description:
-    'Artisan en rénovation intérieure à Argenteuil et en Île-de-France (95). Cuisine sur mesure, salle de bain, peinture, électricité, revêtements de sol. Devis gratuit sous 24h.',
+    'Artisan en rénovation intérieure à Argenteuil, Île-de-France. Cuisine, salle de bain, peinture, électricité, revêtements de sol. Devis gratuit sous 24h.',
   keywords: [
     'rénovation intérieure Argenteuil',
     'artisan rénovation Île-de-France',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
   authors: [
     {
       name: COMPANY_INFO.name,
-      url: 'https://horizon-habitat-projet.com',
+      url: 'https://new.horizon-habitat-projet.com',
     },
   ],
   creator: COMPANY_INFO.name,
@@ -50,18 +50,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
-    url: 'https://horizon-habitat-projet.com',
+    url: 'https://new.horizon-habitat-projet.com',
     siteName: COMPANY_INFO.name,
     title: 'Horizon Habitat Projet — Rénovation Intérieure de Qualité',
     description:
       'Entreprise de rénovation intérieure à Argenteuil. Cuisine, salle de bain, peinture, électricité. Devis gratuit, artisan qualifié.',
     images: [
       {
-        url: 'https://horizon-habitat-projet.com/og-image.jpg',
+        url: 'https://new.horizon-habitat-projet.com/opengraph-image',
         width: 1200,
         height: 630,
-        alt: 'Horizon Habitat Projet - Rénovation Intérieure',
-        type: 'image/jpeg',
+        alt: 'Horizon Habitat Projet - Rénovation Intérieure Argenteuil',
+        type: 'image/png',
       },
     ],
   },
@@ -70,10 +70,10 @@ export const metadata: Metadata = {
     title: 'Horizon Habitat Projet — Rénovation Intérieure',
     description:
       'Artisan en rénovation intérieure à Argenteuil et Île-de-France. Devis gratuit.',
-    images: ['https://horizon-habitat-projet.com/og-image.jpg'],
+    images: ['https://new.horizon-habitat-projet.com/opengraph-image'],
   },
   alternates: {
-    canonical: 'https://horizon-habitat-projet.com',
+    canonical: 'https://new.horizon-habitat-projet.com',
   },
   robots: {
     index: true,
@@ -106,6 +106,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const localBusinessSchema = buildLocalBusinessSchema()
+  const organizationSchema = buildOrganizationSchema()
 
   return (
     <html
@@ -117,6 +118,13 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema).replace(/</g, '\\u003c'),
+          }}
+          suppressHydrationWarning
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema).replace(/</g, '\\u003c'),
           }}
           suppressHydrationWarning
         />

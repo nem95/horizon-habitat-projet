@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { blogPosts } from '@/lib/blog-posts'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { buildBreadcrumbSchema } from '@/lib/schema'
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -25,21 +26,25 @@ export async function generateMetadata({
     }
   }
 
+  const seoTitle = post.metaTitle || post.title
+
   return {
-    title: post.title,
+    title: post.metaTitle ? { absolute: `${post.metaTitle} | Horizon Habitat Projet` } : post.title,
     description: post.description,
     openGraph: {
-      title: post.title,
+      title: seoTitle,
       description: post.description,
       type: 'article',
       publishedTime: post.date,
       authors: post.author ? [post.author] : undefined,
       locale: 'fr_FR',
+      images: ['/opengraph-image'],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.title,
+      title: seoTitle,
       description: post.description,
+      images: ['/opengraph-image'],
     },
   }
 }
@@ -844,7 +849,20 @@ export default async function BlogPostPage({
 
   const content = articleContent[post.slug] || '<p>Contenu de l\'article à venir...</p>'
 
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Accueil', url: 'https://new.horizon-habitat-projet.com' },
+    { name: 'Blog', url: 'https://new.horizon-habitat-projet.com/blog' },
+    { name: post.title, url: `https://new.horizon-habitat-projet.com/blog/${post.slug}` },
+  ])
+
   return (
+    <>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify(breadcrumbSchema).replace(/</g, '\\u003c'),
+      }}
+    />
     <div className="flex flex-col min-h-screen bg-canvas">
       <Header />
       <main className="flex-1 pt-20">
@@ -941,5 +959,6 @@ export default async function BlogPostPage({
       </main>
       <Footer />
     </div>
+    </>
   )
 }

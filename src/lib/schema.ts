@@ -8,7 +8,7 @@ export function buildLocalBusinessSchema() {
     name: COMPANY_INFO.name,
     description:
       'Entreprise de rénovation intérieure à Argenteuil et en Île-de-France. Cuisine, salle de bain, peinture, électricité, revêtements, aménagement intérieur.',
-    url: 'https://horizon-habitat-projet.com',
+    url: 'https://new.horizon-habitat-projet.com',
     telephone: COMPANY_INFO.phone,
     priceRange: '€€',
     address: {
@@ -67,8 +67,8 @@ export function buildOrganizationSchema() {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: COMPANY_INFO.name,
-    logo: 'https://horizon-habitat-projet.com/logo.png',
-    url: 'https://horizon-habitat-projet.com',
+    logo: 'https://new.horizon-habitat-projet.com/logo.png',
+    url: 'https://new.horizon-habitat-projet.com',
     sameAs: COMPANY_INFO.socialLinks.map((link) => link.url),
     contactPoint: {
       '@type': 'ContactPoint',
@@ -89,6 +89,18 @@ export function buildBreadcrumbSchema(items: Array<{ name: string; url: string }
       position: index + 1,
       name: item.name,
       item: item.url,
+    })),
+  }
+}
+
+export function buildFAQSchema(faqs: { question: string; answer: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
     })),
   }
 }

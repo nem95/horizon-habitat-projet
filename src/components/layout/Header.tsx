@@ -6,10 +6,10 @@ import { COMPANY_INFO } from '@/types'
 
 const navLinks = [
   { label: 'Accueil', href: '/' },
-  { label: 'Services', href: '#services' },
-  { label: 'Réalisations', href: '#realisations' },
-  { label: 'Témoignages', href: '#avis' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Services', href: '/services' },
+  { label: 'Réalisations', href: '/#realisations' },
+  { label: 'Témoignages', href: '/#avis' },
+  { label: 'Contact', href: '/#nous_contacter' },
   { label: 'Blog', href: '/blog' },
 ]
 

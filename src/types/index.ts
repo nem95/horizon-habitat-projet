@@ -22,6 +22,7 @@ export interface Service {
 export interface BlogPost {
   slug: string
   title: string
+  metaTitle?: string // Short SEO title (≤35 chars, full title used for h1)
   description: string
   date: string // ISO 8601
   author?: string

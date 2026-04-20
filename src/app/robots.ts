@@ -16,7 +16,7 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 0,
       },
     ],
-    sitemap: 'https://horizon-habitat-projet.com/sitemap.xml',
-    host: 'https://horizon-habitat-projet.com',
+    sitemap: 'https://new.horizon-habitat-projet.com/sitemap.xml',
+    host: 'https://new.horizon-habitat-projet.com',
   }
 }

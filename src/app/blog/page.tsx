@@ -5,9 +5,9 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 
 export const metadata: Metadata = {
-  title: 'Blog — Rénovation Intérieure Argenteuil | Horizon Habitat Projet',
+  title: 'Blog rénovation intérieure Argenteuil',
   description:
-    'Articles et conseils sur la rénovation intérieure en Île-de-France. Cuisine, salle de bain, peinture et bien plus encore.',
+    'Articles et conseils sur la rénovation intérieure en Île-de-France. Cuisine, salle de bain, peinture, électricité et revêtements de sol par nos artisans.',
   keywords: [
     'rénovation intérieure Argenteuil',
     'conseils rénovation Île-de-France',

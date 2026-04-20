@@ -11,18 +11,20 @@ const initialState: ContactFormState = {
 
 function Field({
   label,
+  htmlFor,
   error,
   children,
 }: {
   label: string
+  htmlFor: string
   error?: string
   children: React.ReactNode
 }) {
   return (
     <div className="space-y-2">
-      <p className="text-xs font-sans uppercase tracking-[0.2em] text-terra">
+      <label htmlFor={htmlFor} className="block text-xs font-sans uppercase tracking-[0.2em] text-terra">
         {label}
-      </p>
+      </label>
       {children}
       {error && (
         <p className="text-xs font-sans text-terra mt-1">{error}</p>
@@ -57,9 +59,10 @@ export function ContactForm() {
 
         {/* Row 1 */}
         <div className="grid grid-cols-2 gap-4">
-          <Field label="Prénom" error={state?.fieldErrors?.prenom?.[0]}>
+          <Field label="Prénom" htmlFor="prenom" error={state?.fieldErrors?.prenom?.[0]}>
             <input
               type="text"
+              id="prenom"
               name="prenom"
               required
               disabled={isPending}
@@ -67,9 +70,10 @@ export function ContactForm() {
               className={inputClass}
             />
           </Field>
-          <Field label="Nom" error={state?.fieldErrors?.nom?.[0]}>
+          <Field label="Nom" htmlFor="nom" error={state?.fieldErrors?.nom?.[0]}>
             <input
               type="text"
+              id="nom"
               name="nom"
               required
               disabled={isPending}
@@ -81,9 +85,10 @@ export function ContactForm() {
 
         {/* Row 2 */}
         <div className="grid grid-cols-2 gap-4">
-          <Field label="Téléphone" error={state?.fieldErrors?.telephone?.[0]}>
+          <Field label="Téléphone" htmlFor="telephone" error={state?.fieldErrors?.telephone?.[0]}>
             <input
               type="tel"
+              id="telephone"
               name="telephone"
               required
               disabled={isPending}
@@ -91,9 +96,10 @@ export function ContactForm() {
               className={inputClass}
             />
           </Field>
-          <Field label="Email" error={state?.fieldErrors?.email?.[0]}>
+          <Field label="Email" htmlFor="email" error={state?.fieldErrors?.email?.[0]}>
             <input
               type="email"
+              id="email"
               name="email"
               required
               disabled={isPending}
@@ -104,8 +110,9 @@ export function ContactForm() {
         </div>
 
         {/* Row 3 */}
-        <Field label="Type de travaux">
+        <Field label="Type de travaux" htmlFor="travaux">
           <select
+            id="travaux"
             name="travaux"
             disabled={isPending}
             className={inputClass}
@@ -122,8 +129,9 @@ export function ContactForm() {
         </Field>
 
         {/* Message */}
-        <Field label="Votre projet" error={state?.fieldErrors?.message?.[0]}>
+        <Field label="Votre projet" htmlFor="message" error={state?.fieldErrors?.message?.[0]}>
           <textarea
+            id="message"
             name="message"
             required
             disabled={isPending}
