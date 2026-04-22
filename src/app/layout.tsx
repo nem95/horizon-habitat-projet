@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Syne, DM_Sans } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import { buildLocalBusinessSchema, buildOrganizationSchema } from '@/lib/schema'
 import { COMPANY_INFO } from '@/types'
@@ -130,6 +131,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-canvas text-bark">{children}</body>
+      <GoogleAnalytics gaId="G-PLQV8CW0KJ" />
     </html>
   )
 }
